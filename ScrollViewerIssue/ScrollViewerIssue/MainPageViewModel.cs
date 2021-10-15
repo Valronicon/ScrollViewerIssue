@@ -8,25 +8,21 @@ namespace ScrollViewerIssue
 {
     public class MainPageViewModel : ViewModelBase
     {
-        public ObservableCollection<Ring> Rings { get; }
+        public ObservableCollection<Ring> Rings { get; internal set; } = new ObservableCollection<Ring> ();
 
-        public ICommand AddRing { get; }
+        public ICommand AddRings { get; }
 
         public MainPageViewModel ()
         {
-            Rings = new ObservableCollection<Ring> ()
+            AddRings = new RelayCommand (() =>
             {
-                new Ring (Color.Beige, 1, "Ring 1", "Info 1"),
-                new Ring (Color.Blue, 2, "Ring 2", "Info 2"),
-                new Ring (Color.Chartreuse, 3, "Ring 3", "Info 3"),
-                new Ring (Color.Cyan, 4, "Ring 4", "Info 4"),
-                new Ring (Color.Crimson, 5, "Ring 5", "Info 5"),
-            };
+                Rings.Clear ();
 
-            AddRing = new RelayCommand (() =>
-            {
-                var newRingNumber = Rings.Count + 1;
-                Rings.Add (new Ring (Color.Green, newRingNumber, "Ring " + newRingNumber, "Was added"));
+                Rings.Add (new Ring (Color.Beige, 1, "Ring 1", "Info 1"));
+                Rings.Add (new Ring (Color.Beige, 2, "Ring 2", "Info 2"));
+                Rings.Add (new Ring (Color.Beige, 3, "Ring 3", "Info 3"));
+                Rings.Add (new Ring (Color.Beige, 4, "Ring 4", "Info 4"));
+                Rings.Add (new Ring (Color.Beige, 5, "Ring 5", "Info 5"));
             });
         }
 
