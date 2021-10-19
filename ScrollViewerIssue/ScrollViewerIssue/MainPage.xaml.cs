@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace ScrollViewerIssue
 {
@@ -14,6 +15,13 @@ namespace ScrollViewerIssue
         {
             InitializeComponent ();
             BindingContext = new MainPageViewModel ();
+            ((MainPageViewModel) BindingContext).OnRingsAdded += OnRingsAdded;
+        }
+
+        private void OnRingsAdded ()
+        {
+            InvalidateMeasure ();
+            ForceLayout ();
         }
     }
 }

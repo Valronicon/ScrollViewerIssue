@@ -4,7 +4,7 @@ namespace ScrollViewerIssue
 {
     public class Ring
     {
-        public Color EllipseBackgroundColor { get; }
+        public Brush EllipseBackgroundColor { get; }
 
         public double Number { get; }
 
@@ -14,7 +14,7 @@ namespace ScrollViewerIssue
 
         public Ring (Color ellipseBackgroundColor, double number, string name, string info)
         {
-            EllipseBackgroundColor = ellipseBackgroundColor;
+            EllipseBackgroundColor = new SolidColorBrush (ellipseBackgroundColor);
             Number = number;
             Name = name;
             Info = info;
